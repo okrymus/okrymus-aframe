@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 
-class RealTime extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -104,4 +104,4 @@ class RealTime extends Component {
   }
 }
 
-export default RealTime;
+export default Home;
