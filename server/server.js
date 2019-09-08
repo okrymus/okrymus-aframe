@@ -25,8 +25,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Socket.io
-const https = require("https").createServer(app);
-const io = require("socket.io")(https);
+// const http = require("http").createServer(app);
+// const io = require("socket.io")(http);
+var https = require("https");
+var server = https.createServer(
+  {
+    key: fs.readFileSync("/etc/letsencrypt/live/domain.name/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/domain.name/cert.pem"),
+    ca: fs.readFileSync("/etc/letsencrypt/live/domain.name/chain.pem"),
+    requestCert: false,
+    rejectUnauthorized: false
+  },
+  app
+);
+server.listen(8000);
+var io = require("socket.io").listen(server);
+
 io.on("connection", function(socket) {
   console.log("a user connected");
   socket.on("disconnect", function() {
@@ -36,7 +50,7 @@ io.on("connection", function(socket) {
     console.log("message: " + msg);
   });
 });
-io.listen(8000);
+// io.listen(8000);
 
 // API routes
 require("./routes")(app);
