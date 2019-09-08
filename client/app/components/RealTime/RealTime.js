@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 // import openSocket from "socket.io-client";
-// var socket = require("socket.io-client")("http://localhost:8000");
+var socket = require("socket.io-client")("http://localhost:8000");
 
 // const socket = openSocket("http://localhost:8000");
 
 class RealTime extends Component {
   constructor(props) {
-    // var socket = require("socket.io-client")("http://localhost:8000");
-
     super(props);
 
     this.state = {
@@ -22,7 +20,7 @@ class RealTime extends Component {
 
     this._modifyCounter = this._modifyCounter.bind(this);
 
-    // this.sendSocketIO = this.sendSocketIO.bind(this);
+    this.sendSocketIO = this.sendSocketIO.bind(this);
   }
 
   componentDidMount() {
@@ -90,9 +88,9 @@ class RealTime extends Component {
     });
   }
 
-  // sendSocketIO() {
-  //   socket.emit("example_message", "demo");
-  // }
+  sendSocketIO() {
+    socket.emit("example_message", "demo");
+  }
 
   render() {
     return (
@@ -111,9 +109,9 @@ class RealTime extends Component {
         </ul>
 
         <button onClick={this.newCounter}>New counter</button>
-        {/* <div>
+        <div>
           <button onClick={this.sendSocketIO}>Send Socket.io</button>
-        </div> */}
+        </div>
       </>
     );
   }
