@@ -48,8 +48,8 @@ var options = {
   cert: fs.readFileSync(sslPath + "fullchain.pem")
 };
 
-var server = http.createServer(options, this.app);
-var io = require("socket.io").listen(this.server);
+var server = http.createServer(options, app);
+var io = require("socket.io").listen(server);
 server.listen(8000);
 
 io.on("connection", function(socket) {
