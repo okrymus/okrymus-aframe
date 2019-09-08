@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
+import openSocket from "socket.io-client";
+const socket = openSocket("http://localhost:8000");
 
-class Home extends Component {
+class RealTime extends Component {
   constructor(props) {
     super(props);
 
@@ -15,6 +17,8 @@ class Home extends Component {
     this.deleteCounter = this.deleteCounter.bind(this);
 
     this._modifyCounter = this._modifyCounter.bind(this);
+
+    this.sendSocketIO = this.sendSocketIO.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +86,10 @@ class Home extends Component {
     });
   }
 
+  sendSocketIO() {
+    socket.emit("example_message", "demo");
+  }
+
   render() {
     return (
       <>
@@ -99,9 +107,12 @@ class Home extends Component {
         </ul>
 
         <button onClick={this.newCounter}>New counter</button>
+        <div>
+          <button onClick={this.sendSocketIO}>Send Socket.io</button>
+        </div>
       </>
     );
   }
 }
 
-export default Home;
+export default RealTime;
