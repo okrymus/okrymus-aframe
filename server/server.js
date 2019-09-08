@@ -48,9 +48,9 @@ var options = {
   cert: fs.readFileSync(sslPath + "fullchain.pem")
 };
 
-this.server = http.createServer(options, this.app);
-this.io = require("socket.io").listen(this.server);
-this.server.listen(8000);
+var server = http.createServer(options, this.app);
+var io = require("socket.io").listen(this.server);
+server.listen(8000);
 
 io.on("connection", function(socket) {
   console.log("a user connected");
