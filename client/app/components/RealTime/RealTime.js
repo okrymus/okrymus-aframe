@@ -29,7 +29,6 @@ class RealTime extends Component {
           counters: json
         });
       });
-    console.log(this.state);
   }
 
   newCounter() {
