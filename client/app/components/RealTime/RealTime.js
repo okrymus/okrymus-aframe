@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 // import openSocket from "socket.io-client";
-var socket = require("socket.io-client")("https://okrymus.com:8000");
+var socket = require("socket.io-client")("https://okrymus.com:8000", {
+  secure: true
+});
 
 // const socket = openSocket("http://localhost:8000");
 
