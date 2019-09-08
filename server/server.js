@@ -41,6 +41,8 @@ app.use(express.json());
 // );
 // server.listen(8000);
 // var io = require("socket.io").listen(server);
+
+// Socket.io
 var http = require("https");
 var sslPath = "/etc/letsencrypt/live/okrymus.com/";
 var options = {
