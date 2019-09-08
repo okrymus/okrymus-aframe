@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Socket.io
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const https = require("https").createServer(app);
+const io = require("socket.io")(https);
 io.on("connection", function(socket) {
   console.log("a user connected");
   socket.on("disconnect", function() {
