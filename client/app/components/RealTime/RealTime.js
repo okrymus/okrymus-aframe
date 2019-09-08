@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 // import openSocket from "socket.io-client";
-var socket = require("socket.io-client")("http://localhost:8000");
+// var socket = require("socket.io-client")("http://localhost:8000");
 
 // const socket = openSocket("http://localhost:8000");
 
 class RealTime extends Component {
   constructor(props) {
+    // var socket = require("socket.io-client")("http://localhost:8000");
+
     super(props);
 
     this.state = {
@@ -88,9 +90,9 @@ class RealTime extends Component {
     });
   }
 
-  sendSocketIO() {
-    socket.emit("example_message", "demo");
-  }
+  // sendSocketIO() {
+  //   socket.emit("example_message", "demo");
+  // }
 
   render() {
     return (
