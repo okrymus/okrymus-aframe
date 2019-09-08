@@ -22,7 +22,7 @@ class RealTime extends Component {
 
     this._modifyCounter = this._modifyCounter.bind(this);
 
-    this.sendSocketIO = this.sendSocketIO.bind(this);
+    // this.sendSocketIO = this.sendSocketIO.bind(this);
   }
 
   componentDidMount() {
