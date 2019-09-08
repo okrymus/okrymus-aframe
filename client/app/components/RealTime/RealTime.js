@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 // import openSocket from "socket.io-client";
-var socket = require("socket.io-client")("http://localhost:8000");
+var socket = require("socket.io-client")("http://localhost:8070");
 
 // const socket = openSocket("http://localhost:8000");
 
