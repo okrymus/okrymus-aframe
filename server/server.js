@@ -30,9 +30,9 @@ app.use(express.json());
 var https = require("https");
 var server = https.createServer(
   {
-    key: fs.readFileSync("/etc/letsencrypt/live/domain.name/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/domain.name/cert.pem"),
-    ca: fs.readFileSync("/etc/letsencrypt/live/domain.name/chain.pem"),
+    key: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/cert.pem"),
+    ca: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/chain.pem"),
     requestCert: false,
     rejectUnauthorized: false
   },
