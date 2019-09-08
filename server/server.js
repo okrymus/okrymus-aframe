@@ -27,19 +27,30 @@ app.use(express.json());
 // Socket.io
 // const http = require("http").createServer(app);
 // const io = require("socket.io")(http);
-var https = require("https");
-var server = https.createServer(
-  {
-    key: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/cert.pem"),
-    ca: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/chain.pem"),
-    requestCert: false,
-    rejectUnauthorized: false
-  },
-  app
-);
-server.listen(8000);
-var io = require("socket.io").listen(server);
+
+// var https = require("https");
+// var server = https.createServer(
+//   {
+//     key: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/privkey.pem"),
+//     cert: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/cert.pem"),
+//     ca: fs.readFileSync("/etc/letsencrypt/live/okrymus.com/chain.pem"),
+//     requestCert: false,
+//     rejectUnauthorized: false
+//   },
+//   app
+// );
+// server.listen(8000);
+// var io = require("socket.io").listen(server);
+var http = require("https");
+var sslPath = "/etc/letsencrypt/live/okrymus.com/";
+var options = {
+  key: fs.readFileSync(sslPath + "privkey.pem"),
+  cert: fs.readFileSync(sslPath + "fullchain.pem")
+};
+
+this.server = http.createServer(options, this.app);
+this.io = require("socket.io").listen(this.server);
+this.server.listen(8000);
 
 io.on("connection", function(socket) {
   console.log("a user connected");
