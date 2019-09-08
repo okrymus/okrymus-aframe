@@ -111,9 +111,9 @@ class RealTime extends Component {
         </ul>
 
         <button onClick={this.newCounter}>New counter</button>
-        <div>
+        {/* <div>
           <button onClick={this.sendSocketIO}>Send Socket.io</button>
-        </div>
+        </div> */}
       </>
     );
   }
