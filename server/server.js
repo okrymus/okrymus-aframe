@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Socket.io
-const http = require("http").Server(app);
+const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 io.on("connection", function(socket) {
   console.log("a user connected");
