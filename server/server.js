@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Socket.io
-// const http = require("http").createServer(app);
-// const io = require("socket.io")(http);
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
 // var https = require("https");
 // var server = https.createServer(
@@ -43,16 +43,16 @@ app.use(express.json());
 // var io = require("socket.io").listen(server);
 
 // Socket.io
-var http = require("https");
-var sslPath = "/etc/letsencrypt/live/okrymus.com/";
-var options = {
-  key: fs.readFileSync(sslPath + "privkey.pem"),
-  cert: fs.readFileSync(sslPath + "fullchain.pem")
-};
+// var http = require("https");
+// var sslPath = "/etc/letsencrypt/live/okrymus.com/";
+// var options = {
+//   key: fs.readFileSync(sslPath + "privkey.pem"),
+//   cert: fs.readFileSync(sslPath + "fullchain.pem")
+// };
 
-var server = http.createServer(options, app);
-var io = require("socket.io").listen(server);
-server.listen(8000);
+// var server = http.createServer(options, app);
+// var io = require("socket.io").listen(server);
+// server.listen(8000);
 
 io.on("connection", function(socket) {
   console.log("a user connected");
@@ -63,7 +63,7 @@ io.on("connection", function(socket) {
     console.log("message: " + msg);
   });
 });
-// io.listen(8000);
+io.listen(8000);
 
 // API routes
 require("./routes")(app);
