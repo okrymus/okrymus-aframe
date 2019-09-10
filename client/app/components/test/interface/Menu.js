@@ -16,7 +16,7 @@
 
 import "aframe";
 import { trackConfig, supported } from "../Config";
-import "../interface/Item";
+import "./Item";
 
 AFRAME.registerComponent("menu", {
   schema: {

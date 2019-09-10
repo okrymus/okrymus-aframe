@@ -1,20 +1,49 @@
-import * as webvrui from "webvr-ui";
-import Tone from "tone";
-import icon360 from "../../../static/img/360_icon.svg";
-import StartAudioContext from "startaudiocontext";
-import SplashScene from "./SplashScene";
+/**
+ * Copyright 2017 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+import events from "events";
+import "../../../styles/splash.scss";
+import { title } from "../Config";
+import "aframe";
+import "../Scene";
+import AudioBuffer from "tone/Tone/core/Buffer";
+import Tone from "tone/Tone/core/Tone";
+import { SplashScene } from "./Scene";
+import StartAudioContext from "startaudiocontext";
+import * as webvrui from "webvr-ui/build/webvr-ui";
+import { ExitButton } from "../interface/ExitButton";
+import { InsertHeadset } from "../interface/InsertHeadset";
 import { isMobile, isTablet } from "../../../utils/Helpers";
 
-const audioBufferLoaded = new Promise(done => {
-  Tone.Buffer.on("load", done);
-});
+const audioBufferLoaded = new Promise(resolve =>
+  AudioBuffer.on("load", resolve)
+);
 
-export default function initSplash() {
-  const aScene = document.querySelector("a-scene");
-  const splash = document.querySelector("#splash");
+/**
+ * A View that manages the loading Splash Screen Scene and the users
+ * ability to enter the experience.
+ * @param {HTMLElement} container
+ */
+export default function initSplash(container = document.body) {
+  //the AFrame scene
+  const aScene = container.querySelector("a-scene");
+  const splash = container.querySelector("#splash");
   //this link is for when VR is available but user might want 360 instead
   const tryItIn360 = document.getElementById("try-it-in-360");
+  //holds the buttons
   const enterVRContainer = splash.querySelector("#enter-vr-container");
   //the splash threejs scene
   const splashScene = new SplashScene(splash.querySelector("canvas"));
@@ -58,7 +87,6 @@ export default function initSplash() {
   // this can happen by "Enter 360" or "Try it in 360"
   function onEnter360() {
     splash.classList.remove("visible");
-    console.log("enter360");
     splashScene.close();
     aScene.play();
     aScene.emit("enter-360");
@@ -106,20 +134,25 @@ export default function initSplash() {
     }
   });
 
+  //start the audio context on click
   StartAudioContext(Tone.context, [enterVRContainer]);
   splashScene.start();
 
   window.splashScene = splashScene;
 
   aSceneLoaded
+    //load the scene, say "loading"
     .then(() => {
+      //now that we have a renderer, make sure webvr-ui gets the canvas
       enterVRButton.sourceCanvas = aScene.renderer.domElement;
       //dont run the aScene in the background
       aScene.pause();
       //add the loaded events
       tryItIn360.addEventListener("click", onEnter360);
     })
+    //load audio for entry
     .then(audioBufferLoaded)
+    //change text to "Enter **"
     .then(() => {
       //audio and everything is loaded now
       enterVRContainer.classList.add("ready");
@@ -135,11 +168,37 @@ export default function initSplash() {
           (enterVRButton.state || "").indexOf("error") >= 0
         ) {
           document.querySelector(".webvr-ui-title").innerHTML =
-            "<img src=" + icon360 + "><span>ENTER 360</span>";
+            '<img src="./images/360_icon.svg"><span>ENTER 360</span>';
           document.querySelector(".webvr-ui-title").classList.add("mode360");
         }
       };
       return enterVRButton.getVRDisplay().then(always, always);
     })
     .catch(console.error.bind(console));
+
+  new ExitButton();
+  new InsertHeadset();
+  aboutPage();
+
+  return splash;
+}
+
+/**
+ * Bind the about page elements to showing / hiding the page
+ * @param {HTMLElement} about the about page root element, defaults to #about
+ */
+function aboutPage(about = document.querySelector("#about")) {
+  //open the about page
+  const openAbout = splash.querySelector("#openAbout");
+  const closeAbout = splash.querySelector("#closeAbout");
+
+  openAbout.addEventListener("click", () => {
+    about.classList.add("visible");
+  });
+
+  closeAbout.addEventListener("click", () => {
+    about.classList.remove("visible");
+  });
+
+  return about;
 }

@@ -13,7 +13,11 @@ import PeriodicTable from "./components/PeriodicTable/PeriodicTable";
 import HelloWorld from "./components/HelloWorld/HelloWorld";
 
 import "./styles/styles.scss";
+import "aframe";
+import "webvr-polyfill";
 require("aframe");
+require("webvr-ui");
+
 render(
   <Router>
     <App>

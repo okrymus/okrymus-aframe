@@ -72,7 +72,7 @@ $landscapeHeight: 420px;
       }
 
       &:before {
-        content: "OKRYMUS PRESENTS";
+        content: "SONG EXPLODER PRESENTS";
         position: absolute;
         width: 100%;
         left: 50%;
@@ -82,10 +82,11 @@ $landscapeHeight: 420px;
       }
     }
 
-    #present {
+    #featuring {
       margin-top: 0px;
       margin-bottom: 0px;
       font-size: 20px;
+      display: none;
 
       @media (max-width: $tabletWidth) {
         font-size: 16px;
@@ -97,6 +98,44 @@ $landscapeHeight: 420px;
 
       @media (max-height: $landscapeHeight) {
         display: none;
+      }
+    }
+
+    #bands {
+      margin-top: 15px;
+      width: 100%;
+      max-width: 500px;
+      min-width: 300px;
+      font-size: 26px;
+      display: inline-block;
+      padding: 0px;
+
+      @media (max-width: $tabletWidth) {
+        font-size: 20px;
+      }
+
+      @media (max-width: $phoneWidth) {
+        margin-top: 5px;
+        font-size: 16px;
+      }
+
+      @media (max-height: $landscapeHeight) {
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+
+        &:after {
+          margin-left: 5px;
+          margin-right: 5px;
+          display: inline;
+          content: "/";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
       }
     }
 
@@ -173,7 +212,7 @@ $landscapeHeight: 420px;
   }
 
   #openAbout:before {
-    content: "About";
+    content: "?";
   }
 
   #closeAbout:before {
