@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import initSplash from "./splash/Splash";
+import initAscene from "./initAscene";
 import "../../styles/splash";
 import AframeContent from "./ascene";
+import "../../styles/exit.scss";
+import { isMobile, is360 } from "../../utils/Helpers";
 
 // import ExitButton from "./interface/ExitButton";
 class PeriodicTable extends Component {
@@ -10,6 +13,9 @@ class PeriodicTable extends Component {
     // const element = document.querySelector("#exitButton");
   }
   componentDidMount() {
+    //
+    // About
+    //
     openAbout.addEventListener("click", () => {
       about.classList.add("visible");
     });
@@ -18,7 +24,33 @@ class PeriodicTable extends Component {
       about.classList.remove("visible");
     });
 
+    //
+    //  Exit
+    //
+    exitButton.addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    const scene = document.querySelector("a-scene");
+
+    scene.addEventListener("enter-360", () => this.show());
+    scene.addEventListener("enter-vr", () => this.show());
+    scene.addEventListener("exit-vr", () => this.hide());
+
     initSplash();
+    initAscene();
+  }
+
+  show() {
+    setTimeout(() => {
+      if (!isMobile() || (isMobile() && is360())) {
+        exitButton.classList.add("visible");
+      }
+    }, 10);
+  }
+  hide() {
+    window.location.reload();
+    exitButton.classList.remove("visible");
   }
 
   render() {

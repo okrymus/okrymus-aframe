@@ -1,3 +1,5 @@
+import events from "events";
+
 import * as webvrui from "webvr-ui";
 import Tone from "tone";
 import icon360 from "../../../static/img/360_icon.svg";
@@ -23,6 +25,7 @@ export default function initSplash() {
     aScene.addEventListener("loaded", resolve)
   );
 
+  console.log(!navigator.getGamepads);
   // create the webvr-ui Button
   const enterVRButton = new webvrui.EnterVRButton(null, {
     color: "#ffffff",
@@ -69,10 +72,10 @@ export default function initSplash() {
   }
 
   enterVRButton.on("ready", () => {
-    const display = enterVRButton.manager.defaultDisplay;
-    if (display) {
-      aScene.setAttribute("headset", display.displayName);
-    }
+    // const display = enterVRButton.manager.defaultDisplay;
+    // if (display) {
+    //   aScene.setAttribute("headset", display.displayName);
+    // }
     enterVRButton.domElement.style.marginBottom = "10px";
     if (!isTablet()) {
       enterVRContainer.insertBefore(

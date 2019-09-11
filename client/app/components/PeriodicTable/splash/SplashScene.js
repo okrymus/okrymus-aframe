@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class SplashScene extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
