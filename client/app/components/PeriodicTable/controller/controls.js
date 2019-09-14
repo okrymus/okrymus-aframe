@@ -82,6 +82,8 @@ AFRAME.registerComponent("controls", {
 
   init() {
     // this.controllerExists = ["true"];
+    this.updateControls = this.updateControls.bind(this);
+
     console.log(controllerExists);
     //check frequently to see if controls have changed
     this.scheduler = animitter({ fps: 2 });
@@ -97,21 +99,56 @@ AFRAME.registerComponent("controls", {
     // console.log(this.controllerExists);
     // console.log(vrGamepad);
     // if (vrGamepad !== controllerExists)
+    const changed = vrGamepad != controllerExists;
+    if (changed) {
+    }
+
     if (!vrGamepad) {
       //   console.log(vrGamepad);
-      controllerExists = vrGamepad;
       //   console.log(shouldGetCursor());
       if (shouldGetRetical()) {
         console.log("shouldGetRetical");
       } else if (shouldGetCursor()) {
-        console.log("shouldGetCursor");
+        // this.el.setAttribute(components[types.CURSOR], true);
+        // this.el.appendChild(this.createCursorController());
+        // this.createCursorController();
+        this.el.setAttribute(components[types.CURSOR], true);
+        // console.log(this.el);
+
+        // console.log("shouldGetCursor");
       }
+
+      controllerExists = vrGamepad;
 
       return;
     }
-    console.log("updateControls");
+    controllerExists = vrGamepad;
+    // console.log("updateControls");
     // console.log(vrGamepad);
     // console.log(AFRAME.utils.device.isMobile());
-    controllerExists = vrGamepad;
+  }
+});
+
+/**
+ * mouse-controller component
+ */
+AFRAME.registerComponent("mouse-controller", {
+  init: function() {
+    const mouseCursor = document.createElement("a-entity");
+    mouseCursor.setAttribute("mouse-cursor", true);
+    document.querySelector("a-scene").appendChild(mouseCursor);
+    console.log("mouse-controller");
+    setTimeout(() => {
+      this.el.setAttribute(
+        "ray-intersection-emitter",
+        `
+                updatePositions: true;
+                front: [mouse-cursor];
+                back: [camera];
+                touch:${isMobile()};
+            `
+      );
+    }, 10);
+    // console.log(document.querySelector("a-scene"));
   }
 });

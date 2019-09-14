@@ -8,16 +8,18 @@ const AframeContent = () => (
     webvr-ui
     splash
     vr-mode-ui="enabled: false"
-    controls
   >
     <a-entity
       camera
       listener
       look-controls
       wasd-controls="enabled:true;"
-      position="0 0 0"
+      position="0 2 -4"
     ></a-entity>
-    <a-entity menu position="0 2 -2" scale="0.75 0.75 1" id="menu">
+
+    <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+
+    <a-entity menu position="-2.5 3 -4" scale="0.75 0.75 1" id="menu">
       <a-animation
         begin="shrink"
         attribute="position"
@@ -48,25 +50,31 @@ const AframeContent = () => (
       ></a-animation>
     </a-entity>
 
-    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+    <a-box
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+      position="0 2 0"
+      rotation="45 45 45"
+      color="#4CC3D9"
+    ></a-box>
     <a-cylinder
-      position="1 0.75 -3"
-      radius="0.5"
-      height="1.5"
+      position="0 0 0"
+      radius="3.5"
+      height="0.1"
       color="#FFC65D"
     ></a-cylinder>
-    <a-plane
-      position="0 0 -4"
-      rotation="-90 0 0"
-      width="4"
-      height="4"
-      color="#7BC8A4"
-    ></a-plane>
-    <a-sky color="#ECECEC"></a-sky>
 
+    <a-cylinder
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+      color="cyan"
+      material="side: double, transparent:true "
+      open-ended="true"
+      opacity="0.5"
+      position="0 0.5 0"
+    ></a-cylinder>
+
+    <a-sky color="#ECECEC"></a-sky>
     {/* control */}
-    <a-entity controls></a-entity>
+    {/* <a-entity controls></a-entity> */}
   </a-scene>
 );
 

@@ -18,19 +18,17 @@ import "aframe";
 
 AFRAME.registerComponent("menu-item", {
   schema: {
-    artist: {
+    atomic_number: {
+      type: "number"
+    },
+    symbol: {
       type: "string"
     },
-    track: {
-      type: "string"
-    },
+
     color: {
       type: "color"
     },
-    image: {
-      default: "pink",
-      type: "string"
-    },
+
     selected: {
       default: false,
       type: "boolean"
@@ -52,7 +50,7 @@ AFRAME.registerComponent("menu-item", {
     const height = (this._height = 600);
 
     // scale it
-    const scaling = 0.95;
+    const scaling = 0.6;
     this.el.setAttribute(
       "scale",
       `${scaling} ${(scaling * height) / width} ${scaling}`
@@ -60,27 +58,37 @@ AFRAME.registerComponent("menu-item", {
 
     //text
     const text = document.createElement("a-text");
-    text.setAttribute("value", this.data.artist.toUpperCase());
+    const textScale = 0.8;
+    text.setAttribute("value", this.data.symbol);
     text.setAttribute("align", "center");
     text.setAttribute("material", "shader: flat");
     text.setAttribute("color", "white");
-    text.setAttribute("wrap-count", 20);
+    text.setAttribute("wrap-count", 3);
     text.setAttribute("width", 1);
     text.setAttribute("side", "double");
-    text.setAttribute("scale", `1 ${width / height} 1`);
-    text.setAttribute("position", "0 0.08 0");
+    text.setAttribute(
+      "scale",
+      `${1 * textScale} ${(width / height) * textScale} ${1 * textScale}`
+    );
+    text.setAttribute("position", "0 0 0");
     this.el.appendChild(text);
 
+    const subTextScale = 0.7;
     const subText = document.createElement("a-text");
-    subText.setAttribute("value", this.data.track.toUpperCase());
-    subText.setAttribute("align", "center");
+    subText.setAttribute("value", this.data.atomic_number);
+    subText.setAttribute("align", "left");
     subText.setAttribute("material", "shader: flat");
     subText.setAttribute("color", "white");
-    subText.setAttribute("wrap-count", 26);
+    subText.setAttribute("wrap-count", 6);
     subText.setAttribute("width", 1);
+    subText.setAttribute("height", 0.31);
     subText.setAttribute("side", "double");
-    subText.setAttribute("scale", `1 ${width / height} 1`);
-    subText.setAttribute("position", "0 -0.1 0");
+    subText.setAttribute(
+      "scale",
+      `${1 * subTextScale} ${(width / height) * subTextScale} ${1 *
+        subTextScale}`
+    );
+    subText.setAttribute("position", "-0.5 0.3 0");
     this.el.appendChild(subText);
 
     //border
@@ -92,7 +100,6 @@ AFRAME.registerComponent("menu-item", {
       `shader: flat; color: ${this.darkGray}; side: double; transparent: true; opacity: 0.5`
     );
     bgElement.classList.add("selectable");
-    console.log("ddd");
 
     //mouse events
     this.el.addEventListener("mouseenter", () => {
@@ -113,23 +120,23 @@ AFRAME.registerComponent("menu-item", {
     });
   },
 
-  _makeBorder(entered) {
-    const context = this._context;
-    const width = this._width;
-    const height = this._height;
-    const borderWidth = entered ? 20 : 10;
-    context.lineWidth = borderWidth;
-    context.clearRect(0, 0, width, width);
-    const yOffset = (width - height) / 2;
-    const padding = 6;
-    const halfBorder = borderWidth / 2;
-    context.strokeRect(
-      padding + halfBorder,
-      0 + padding + halfBorder,
-      width - padding * 2 - halfBorder * 2,
-      height - padding * 2 - halfBorder * 2
-    );
-  },
+  // _makeBorder(entered) {
+  //   const context = this._context;
+  //   const width = this._width;
+  //   const height = this._height;
+  //   const borderWidth = entered ? 20 : 10;
+  //   context.lineWidth = borderWidth;
+  //   context.clearRect(0, 0, width, width);
+  //   const yOffset = (width - height) / 2;
+  //   const padding = 6;
+  //   const halfBorder = borderWidth / 2;
+  //   context.strokeRect(
+  //     padding + halfBorder,
+  //     0 + padding + halfBorder,
+  //     width - padding * 2 - halfBorder * 2,
+  //     height - padding * 2 - halfBorder * 2
+  //   );
+  // },
 
   update() {
     this.bgElement.setAttribute(

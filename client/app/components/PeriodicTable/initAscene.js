@@ -1,6 +1,7 @@
 import "./interface/Menu";
-import "./controller/controls";
 // import "./controller/controls";
+// import "./controller/controls";
+// import "./controller/Controller";
 // import "./controller/ray-intersection-emitter";
 
 export default function initAScene() {

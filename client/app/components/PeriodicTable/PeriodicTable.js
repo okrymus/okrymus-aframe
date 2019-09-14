@@ -60,7 +60,7 @@ class PeriodicTable extends Component {
         <div id="splash" className="visible">
           <canvas id="splash-canvas"></canvas>
           <div id="splash-container">
-            <h1 id="title">INSIDE MUSIC</h1>
+            <h1 id="title">PERIODIC TABLE</h1>
             <p id="featuring">featuring</p>
             <div id="enter-vr-container" style={{ color: "#ffffff" }}>
               <br />
