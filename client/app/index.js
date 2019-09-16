@@ -16,6 +16,7 @@ import "./styles/styles.scss";
 import "aframe";
 import "aframe-html-shader";
 import "webvr-polyfill";
+require("aframe-extras");
 
 require("aframe-html-shader");
 require("aframe");

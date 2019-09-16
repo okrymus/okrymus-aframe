@@ -1,14 +1,37 @@
+import oilTank from "../../static/models/oilTank.glb";
+import atom from "../../static/models/atom.glb";
+
 import React from "react";
+// import oilTank from "../../static/models/oilTank.glb";
 
 const AframeContent = () => (
   <a-scene
     renderer="antialias: true"
-    fog="color: #000000; near: 0.1; far: 5;"
     loading
     webvr-ui
     splash
     vr-mode-ui="enabled: false"
   >
+    <a-assets>
+      <a-asset-item id="oilTank" src={oilTank}></a-asset-item>
+      <a-asset-item id="atom" src={atom}></a-asset-item>
+    </a-assets>
+    <a-gltf-model
+      src="#oilTank"
+      rotation="0 270 0"
+      scale="0.03 0.03 0.03"
+    ></a-gltf-model>
+
+    <a-gltf-model
+      animation-mixer="loop: 2"
+      src="#atom"
+      rotation="0 270 0"
+      scale="0.1 0.1 0.1"
+      position="0 1.5 0"
+    ></a-gltf-model>
+
+    <a-entity light="color: #AFA; intensity: 1.5" position="-1 1 0"></a-entity>
+
     <a-entity
       camera
       listener
@@ -17,10 +40,7 @@ const AframeContent = () => (
       position="0 2 -4"
     ></a-entity>
 
-    <a-entity
-      light="type: point; intensity: 0.75; distance: 50; decay: 2"
-      position="0 5 10"
-    ></a-entity>
+    <a-entity light="type: ambient; color: #CCC"></a-entity>
 
     <div
       id="texture"
@@ -89,12 +109,12 @@ const AframeContent = () => (
       ></a-animation>
     </a-entity>
 
-    <a-box
+    {/* <a-box
       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
       position="0 2 0"
       rotation="45 45 45"
       color="#4CC3D9"
-    ></a-box>
+    ></a-box> */}
     <a-cylinder
       position="0 0 0"
       radius="3.5"
@@ -102,13 +122,13 @@ const AframeContent = () => (
       color="#ffffff"
     ></a-cylinder>
 
-    <a-cylinder
+    {/* <a-cylinder
       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
       color="cyan"
       material="side: double, transparent:true "
       opacity="0.5"
       position="0 0.5 0"
-    ></a-cylinder>
+    ></a-cylinder> */}
 
     <a-entity
       rotation="0 0 0"
@@ -132,14 +152,11 @@ const AframeContent = () => (
       </a-entity>
     </a-entity>
 
-    <a-entity
-      id="mouseCursor"
-      cursor="rayOrigin: mouse"
-      raycaster="objects: #box"
-    ></a-entity>
+    {/* <a-sky color="#6EBAA7"></a-sky> */}
 
     {/* <a-sky color="#ECECEC"></a-sky> */}
-    <a-sky color="#FAFAFA"></a-sky>
+    <a-sky color="#000000"></a-sky>
+    {/* <a-sky color="#FAFAFA"></a-sky> */}
     {/* control */}
     {/* <a-entity controls></a-entity> */}
   </a-scene>
