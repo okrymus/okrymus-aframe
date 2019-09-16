@@ -14,7 +14,10 @@ import HelloWorld from "./components/HelloWorld/HelloWorld";
 
 import "./styles/styles.scss";
 import "aframe";
+import "aframe-html-shader";
 import "webvr-polyfill";
+
+require("aframe-html-shader");
 require("aframe");
 require("webvr-ui");
 
