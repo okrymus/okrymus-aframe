@@ -17,7 +17,7 @@ AFRAME.registerComponent("info", {
     const aScene = document.querySelector("a-scene");
     console.log(this.data.atomic_number);
     console.log(this.data.name_symbol);
-    this.el.innerHTML = `<a-entity geometry="primitive: cylinder; radius: 3.5; height: 3; segmentsRadial: 48; thetaLength: -160; openEnded: true" material="shader: html; target: #texture; side: double; width: 2000; height: 1500; transparent: true" update-repeat position="0 2 0" rotation="0 -90 0"></a-entity>`;
+    this.el.innerHTML = `<a-entity geometry="primitive: cylinder; radius: 8; height: 6; segmentsRadial: 48; thetaLength: -160; openEnded: true" material="shader: html; target: #texture; side: double; width: 2000; height: 2000; transparent: true" update-repeat position="0 2 0" rotation="0 -00 0"></a-entity>`;
     // var curvetext = document.createElement("a-entity");
     // curvetext.setAttribute(
     //   geometry,

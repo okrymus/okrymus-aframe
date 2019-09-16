@@ -63,7 +63,7 @@ module.exports = {
         loader: "shader-loader"
       },
       {
-        test: /\.(png|gif|svg|woff|woff2|eot|ttf)$/,
+        test: /\.(png|gif|svg|woff|woff2|eot|ttf|glb|gltf)$/,
         loader: "url-loader"
       }
     ]
