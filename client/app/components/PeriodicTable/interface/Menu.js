@@ -1,6 +1,7 @@
 import "aframe";
 import { trackConfig, supported } from "../Config";
 import "./Item";
+import "./Info";
 let periodic_table = require("../../../static/json/periodic_table.json");
 let UI_periodic_table = require("../../../static/json/UI_periodic_table.json");
 
@@ -41,16 +42,8 @@ AFRAME.registerComponent("menu", {
           1} 0}`
       );
 
-      // const angle = 8;
-      // if (i === 0 || i === 3) {
-      //   plane.setAttribute("rotation", `0 ${angle} 0`);
-      // } else if (i === 2 || i === 5) {
-      //   plane.setAttribute("rotation", `0 ${-angle} 0`);
-      // }
-
       //unselect the previous track
       plane.addEventListener("click", () => {
-        console.log("fdgdshdjtussw");
         if (Date.now() - lastClick > 500) {
           lastClick = Date.now();
         } else {
@@ -68,6 +61,22 @@ AFRAME.registerComponent("menu", {
             currentSelection.setAttribute("menu-item", "selected", false);
           }
           plane.setAttribute("menu-item", "selected", true);
+
+          // remove info if exists
+          var elementExists = document.querySelector("#info");
+          if (elementExists) {
+            elementExists.remove();
+          }
+
+          const aScene = document.querySelector("a-scene");
+
+          const info = document.createElement("a-entity");
+          info.setAttribute("info", {
+            atomic_number: element.atomic_number,
+            name_symbol: element.name_symbol
+          });
+          info.id = "info";
+          aScene.appendChild(info);
           currentSelection = plane;
         }
       });

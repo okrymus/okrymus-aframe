@@ -31,9 +31,6 @@ export default function initSplash() {
     color: "#ffffff",
     corners: "square",
     onRequestStateChange: state => {
-      // if(state === webvrui.State.PRESENTING){
-      // 	enterVRButton.setTitle('WAITING');
-      // }
       return true;
     },
     textEnterVRTitle: "loading".toUpperCase()

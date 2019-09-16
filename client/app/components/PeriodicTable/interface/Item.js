@@ -28,7 +28,6 @@ AFRAME.registerComponent("menu-item", {
     color: {
       type: "color"
     },
-
     selected: {
       default: false,
       type: "boolean"

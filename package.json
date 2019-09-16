@@ -26,6 +26,7 @@
     "aframe-controller-cursor-component": "^0.2.7",
     "aframe-extras": "^6.0.0",
     "aframe-gif-shader": "^0.9.1",
+    "aframe-html-shader": "^0.2.0",
     "aframe-look-at-component": "^0.8.0",
     "animitter": "^3.0.0",
     "autoprefixer": "^9.6.1",
