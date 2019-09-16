@@ -23,7 +23,6 @@ const AframeContent = () => (
     ></a-gltf-model>
 
     <a-gltf-model
-      animation-mixer="loop: 2"
       src="#atom"
       rotation="0 270 0"
       scale="0.1 0.1 0.1"
@@ -41,40 +40,6 @@ const AframeContent = () => (
     ></a-entity>
 
     <a-entity light="type: ambient; color: #CCC"></a-entity>
-
-    <div
-      id="texture"
-      style={{
-        width: "100%",
-        height: "100%",
-        position: "fixed",
-        left: "0",
-        top: "0",
-        zIndex: "-1",
-        overflow: "hidden"
-      }}
-    >
-      <p
-        style={{
-          position: "relative",
-          top: "20px",
-          fontSize: "100px",
-          color: "white"
-        }}
-      >
-        HELLO HELLO
-      </p>
-      <p
-        style={{
-          position: "relative",
-          top: "20px",
-          fontSize: "48px",
-          color: "white"
-        }}
-      >
-        curvy text
-      </p>
-    </div>
 
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
 
