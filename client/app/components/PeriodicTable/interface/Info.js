@@ -17,6 +17,9 @@ AFRAME.registerComponent("info", {
     name: {
       type: "string"
     },
+    element_category: {
+      type: "string"
+    },
     name_symbol: {
       type: "string"
     },
@@ -27,8 +30,8 @@ AFRAME.registerComponent("info", {
 
   init() {
     const aScene = document.querySelector("a-scene");
-    console.log(this.data.atomic_number);
-    console.log(this.data.name_symbol);
+    // console.log(this.data.atomic_number);
+    // console.log(this.data.name_symbol);
 
     document.getElementById("symbol").setAttribute("value", this.data.symbol);
     document.getElementById("name").setAttribute("value", this.data.name);
@@ -49,6 +52,21 @@ AFRAME.registerComponent("info", {
         require(`../../../static/models/${this.data.name}.glb`)
       );
 
+    const element_category = document.createElement("a-text");
+    element_category.setAttribute(
+      "value",
+      `Category\n${this.data.element_category}`
+    );
+    element_category.setAttribute("align", "left");
+    element_category.setAttribute("material", "shader: flat");
+    element_category.setAttribute("color", "white");
+    element_category.setAttribute("wrap-count", 20);
+    element_category.setAttribute("width", 1);
+    element_category.setAttribute("height", 0.31);
+    element_category.setAttribute("side", "double");
+    element_category.setAttribute("position", "-8 3 -5");
+    element_category.setAttribute("rotation", "0 90 0");
+    this.el.appendChild(element_category);
     console.log(aScene);
   }
 });

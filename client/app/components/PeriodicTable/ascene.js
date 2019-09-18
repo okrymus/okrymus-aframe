@@ -20,13 +20,7 @@ const AframeContent = () => (
       rotation="0 270 0"
       scale="0.03 0.03 0.03"
     ></a-gltf-model>
-    {/* 
-    <a-gltf-model
-      src="#exampleModel"
-      rotation="0 270 0"
-      scale="0.1 0.1 0.1"
-      position="0 1.5 0"
-    ></a-gltf-model> */}
+
     <a-entity
       light="type: point; intensity: 5.34"
       postion="0 1.635 0"

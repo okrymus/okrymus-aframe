@@ -84,7 +84,8 @@ AFRAME.registerComponent("menu", {
             atomic_weight: element.atomic_weight,
             boiling_point: element.boiling_point,
             symbol: element.symbol,
-            pronunciation: element.pronunciation
+            pronunciation: element.pronunciation,
+            element_category: element.element_category
           });
           info.id = "info";
           aScene.appendChild(info);
