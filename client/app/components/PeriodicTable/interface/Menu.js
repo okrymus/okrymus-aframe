@@ -31,7 +31,13 @@ AFRAME.registerComponent("menu", {
       const plane = document.createElement("a-entity");
       plane.setAttribute("menu-item", {
         atomic_number: element.atomic_number,
-        symbol: element.symbol
+        name: element.name,
+        name_symbol: element.name_symbol,
+        atomic_weight: element.atomic_weight,
+        boiling_point: element.boiling_point,
+        symbol: element.symbol,
+        pronunciation: element.pronunciation,
+        element_category: element.element_category
       });
       this.el.appendChild(plane);
 
@@ -73,7 +79,12 @@ AFRAME.registerComponent("menu", {
           const info = document.createElement("a-entity");
           info.setAttribute("info", {
             atomic_number: element.atomic_number,
-            name_symbol: element.name_symbol
+            name: element.name,
+            name_symbol: element.name_symbol,
+            atomic_weight: element.atomic_weight,
+            boiling_point: element.boiling_point,
+            symbol: element.symbol,
+            pronunciation: element.pronunciation
           });
           info.id = "info";
           aScene.appendChild(info);

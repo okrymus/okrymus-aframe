@@ -14,23 +14,33 @@ const AframeContent = () => (
   >
     <a-assets>
       <a-asset-item id="oilTank" src={oilTank}></a-asset-item>
-      <a-asset-item id="atom" src={atom}></a-asset-item>
     </a-assets>
     <a-gltf-model
       src="#oilTank"
       rotation="0 270 0"
       scale="0.03 0.03 0.03"
     ></a-gltf-model>
-
+    {/* 
     <a-gltf-model
-      src="#atom"
+      src="#exampleModel"
       rotation="0 270 0"
       scale="0.1 0.1 0.1"
       position="0 1.5 0"
-    ></a-gltf-model>
-
-    <a-entity light="color: #AFA; intensity: 1.5" position="-1 1 0"></a-entity>
-
+    ></a-gltf-model> */}
+    <a-entity
+      light="type: point; intensity: 5.34"
+      postion="0 1.635 0"
+      position="0 1.61 0"
+    ></a-entity>
+    <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
+      <a-entity
+        id="exampleModel"
+        gltf-model={require(`../../static/models/atom.glb`)}
+        rotation="0 270 0"
+        scale="0.1. 0.15 0.15"
+        position="0 1.2 0"
+      ></a-entity>
+    </a-entity>
     <a-entity
       camera
       listener
@@ -38,11 +48,8 @@ const AframeContent = () => (
       wasd-controls="enabled:true;"
       position="0 2 -4"
     ></a-entity>
-
     <a-entity light="type: ambient; color: #CCC"></a-entity>
-
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-
     <a-entity menu position="-2.5 3 -4" scale="0.75 0.75 1" id="menu">
       <a-animation
         begin="shrink"
@@ -73,28 +80,13 @@ const AframeContent = () => (
         easing="ease-out"
       ></a-animation>
     </a-entity>
-
-    {/* <a-box
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-      position="0 2 0"
-      rotation="45 45 45"
-      color="#4CC3D9"
-    ></a-box> */}
+    <a-entity block></a-entity>
     <a-cylinder
       position="0 0 0"
       radius="3.5"
       height="0.1"
       color="#ffffff"
     ></a-cylinder>
-
-    {/* <a-cylinder
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-      color="cyan"
-      material="side: double, transparent:true "
-      opacity="0.5"
-      position="0 0.5 0"
-    ></a-cylinder> */}
-
     <a-entity
       rotation="0 0 0"
       animation="property: rotation; to: 0 360 0; loop: true; dur: 20000"
@@ -116,9 +108,7 @@ const AframeContent = () => (
         ></a-text>
       </a-entity>
     </a-entity>
-
     {/* <a-sky color="#6EBAA7"></a-sky> */}
-
     {/* <a-sky color="#ECECEC"></a-sky> */}
     <a-sky color="#000000"></a-sky>
     {/* <a-sky color="#FAFAFA"></a-sky> */}

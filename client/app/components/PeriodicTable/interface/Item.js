@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import "../interface/Example";
 import "aframe";
 
 AFRAME.registerComponent("menu-item", {
@@ -24,9 +25,26 @@ AFRAME.registerComponent("menu-item", {
     symbol: {
       type: "string"
     },
-
+    atomic_weight: {
+      type: "number"
+    },
+    boiling_point: {
+      type: "number"
+    },
+    name: {
+      type: "string"
+    },
+    name_symbol: {
+      type: "string"
+    },
+    pronunciation: {
+      type: "string"
+    },
     color: {
       type: "color"
+    },
+    element_category: {
+      type: "string"
     },
     selected: {
       default: false,
@@ -38,8 +56,6 @@ AFRAME.registerComponent("menu-item", {
     this.darkGray = "rgb(30, 30, 30)";
     this.selectedColor = "rgb(60, 60, 60)";
     this.lightGray = "rgb(80, 80, 80)";
-
-    const opacity = 1;
 
     this.el.setAttribute(
       "material",
@@ -54,7 +70,7 @@ AFRAME.registerComponent("menu-item", {
       "scale",
       `${scaling} ${(scaling * height) / width} ${scaling}`
     );
-
+    console.log(this.data.element_category);
     //text
     const text = document.createElement("a-text");
     const textScale = 0.8;
@@ -87,6 +103,7 @@ AFRAME.registerComponent("menu-item", {
       `${1 * subTextScale} ${(width / height) * subTextScale} ${1 *
         subTextScale}`
     );
+
     subText.setAttribute("position", "-0.5 0.3 0");
     this.el.appendChild(subText);
 
@@ -103,9 +120,32 @@ AFRAME.registerComponent("menu-item", {
     //mouse events
     this.el.addEventListener("mouseenter", () => {
       bgElement.setAttribute("material", "color", this.lightGray);
-      // bgElement.setAttribute('material', 'opacity', 1)
+
+      var elementExists = document.getElementById("example");
+      if (!elementExists) {
+        const example = document.createElement("a-entity");
+        example.setAttribute("example", {
+          atomic_number: this.data.atomic_number,
+          name: this.data.name,
+          name_symbol: this.data.name_symbol,
+          atomic_weight: this.data.atomic_weight,
+          boiling_point: this.data.boiling_point,
+          symbol: this.data.symbol,
+          pronunciation: this.data.pronunciation,
+          element_category: this.data.element_category
+        });
+        const aScene = document.querySelector("a-scene");
+
+        aScene.appendChild(example);
+        example.id = "testExample";
+      }
     });
+
     this.el.addEventListener("mouseleave", () => {
+      var elementExists = document.getElementById("testExample");
+      if (elementExists) {
+        elementExists.remove();
+      }
       if (this.data.selected) {
         bgElement.setAttribute("material", "color", this.selectedColor);
       } else {

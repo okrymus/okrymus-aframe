@@ -1,4 +1,6 @@
 import "./interface/Menu";
+import "./interface/Block";
+
 // import "./controller/controls";
 // import "./controller/controls";
 // import "./controller/Controller";
