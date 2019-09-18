@@ -1,8 +1,6 @@
 import oilTank from "../../static/models/oilTank.glb";
-import atom from "../../static/models/atom.glb";
 
 import React from "react";
-// import oilTank from "../../static/models/oilTank.glb";
 
 const AframeContent = () => (
   <a-scene
@@ -18,21 +16,37 @@ const AframeContent = () => (
     <a-gltf-model
       src="#oilTank"
       rotation="0 270 0"
+      position="2.987 0.029 -1.175"
       scale="0.03 0.03 0.03"
     ></a-gltf-model>
 
+    <a-gltf-model
+      src="#oilTank"
+      rotation="69.006 -28.993 77.742"
+      position="2.814 0.318 -1.764"
+      scale="0.03 0.03 0.03"
+    ></a-gltf-model>
+
+    <a-entity light="type: point; intensity: 5.34" postion="0 0.2 0"></a-entity>
     <a-entity
-      light="type: point; intensity: 5.34"
-      postion="0 1.635 0"
-      position="0 1.61 0"
+      position="-0.089 1.505 1.814"
+      light="angle: 61.42; intensity: 6.9; penumbra: 1; type: spot; shadowBias: 1.37; shadowCameraFov: 92.73; shadowCameraNear: 1.67; shadowCameraTop: 6.26; shadowCameraRight: 5.78; shadowCameraBottom: -6.91; shadowCameraLeft: -3.34; shadowMapHeight: 510.62; decay: 1.48; distance: 6.63"
+      rotation="-20.216815801191096 -1.6134491510883984 -1.588239008102642"
     ></a-entity>
+
+    <a-entity
+      position="-0.089 1.505 -1.81243"
+      light="angle: 61.42; intensity: 6.9; penumbra: 1; type: spot; shadowBias: 1.37; shadowCameraFov: 92.73; shadowCameraNear: 1.67; shadowCameraTop: 6.26; shadowCameraRight: 5.78; shadowCameraBottom: -6.91; shadowCameraLeft: -3.34; shadowMapHeight: 510.62; decay: 1.48; distance: 6.63"
+      rotation="-20.216815801191096 -175.96164142042224 -1.588239008102642"
+    ></a-entity>
+
     <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
       <a-entity
         id="exampleModel"
         gltf-model={require(`../../static/models/atom.glb`)}
         rotation="0 270 0"
-        scale="0.1. 0.15 0.15"
-        position="0 1.2 0"
+        scale="0.5 0.5 0.5"
+        position="0 0.2 0"
       ></a-entity>
     </a-entity>
     <a-entity
@@ -44,36 +58,12 @@ const AframeContent = () => (
     ></a-entity>
     <a-entity light="type: ambient; color: #CCC"></a-entity>
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-    <a-entity menu position="-2.5 3 -4" scale="0.75 0.75 1" id="menu">
-      <a-animation
-        begin="shrink"
-        attribute="position"
-        to="0 1.8 -2"
-        dur="1000"
-        easing="ease-out"
-      ></a-animation>
-      <a-animation
-        begin="shrink"
-        attribute="scale"
-        to="0.5 0.5 1"
-        dur="1000"
-        easing="ease-out"
-      ></a-animation>
-      <a-animation
-        begin="grow"
-        attribute="position"
-        to="0 2 -2"
-        dur="2000"
-        easing="ease-out"
-      ></a-animation>
-      <a-animation
-        begin="grow"
-        attribute="scale"
-        to="0.75 0.75 1"
-        dur="2000"
-        easing="ease-out"
-      ></a-animation>
-    </a-entity>
+    <a-entity
+      menu
+      position="-2.5 3 -4"
+      scale="0.75 0.75 1"
+      id="menu"
+    ></a-entity>
     <a-entity block></a-entity>
     <a-cylinder
       position="0 0 0"

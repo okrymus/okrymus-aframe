@@ -1,5 +1,5 @@
 import "aframe";
-import { trackConfig, supported } from "../Config";
+import { supported } from "../Config";
 import "./Item";
 import "./Info";
 let periodic_table = require("../../../static/json/periodic_table.json");
@@ -48,7 +48,7 @@ AFRAME.registerComponent("menu", {
           1} 0}`
       );
 
-      //unselect the previous track
+      //unselect the previous element
       plane.addEventListener("click", () => {
         if (Date.now() - lastClick > 500) {
           lastClick = Date.now();
@@ -56,13 +56,7 @@ AFRAME.registerComponent("menu", {
           return;
         }
 
-        this.el.setAttribute("menu", "shrink", true);
-
         if (!plane.getAttribute("menu-item").selected) {
-          const trackClone = {};
-          Object.assign(trackClone, element);
-          this.el.emit("select", trackClone);
-          this.el.sceneEl.emit("menu-selection", trackClone);
           if (currentSelection) {
             currentSelection.setAttribute("menu-item", "selected", false);
           }
@@ -85,7 +79,16 @@ AFRAME.registerComponent("menu", {
             boiling_point: element.boiling_point,
             symbol: element.symbol,
             pronunciation: element.pronunciation,
-            element_category: element.element_category
+            electron_configuration: element.electron_configuration,
+            appearance: element.appearance,
+            group_block: element.group_block,
+            ionization_energies: element.ionization_energies,
+            melting_point: element.melting_point,
+            covalent_radius: element.covalent_radius,
+            element_category: element.element_category,
+            discovery: element.discovery,
+            naming: element.naming,
+            first_isolation: element.first_isolation
           });
           info.id = "info";
           aScene.appendChild(info);
@@ -93,17 +96,5 @@ AFRAME.registerComponent("menu", {
         }
       });
     });
-
-    this.el.sceneEl.addEventListener("song-end", () => {
-      this.el.setAttribute("menu", "shrink", false);
-    });
-  },
-
-  update() {
-    if (this.data.shrink) {
-      this.el.emit("shrink");
-    } else {
-      this.el.emit("grow");
-    }
   }
 });

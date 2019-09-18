@@ -2738,7 +2738,7 @@
     "cas_number": "7440-17-7",
     "discovery": "Robert Bunsen and Gustav Kirchhoff (1861)",
     "named_by": "",
-    "iso": "iso\nNA\nhalf-life\nDM\nDE (MeV)\nDP\n\n\n83Rb\nsyn\n86.2 d\n?\n�\n83Kr\n\n\n?\n0.52, 0.53,\n0.55\n�\n\n\n84Rb\nsyn\n32.9 d\n?\n�\n84Kr\n\n\n?+\n1.66, 0.78\n84Kr\n\n\n?\n0.881\n�\n\n\n??\n0.892\n84Sr\n\n\n85Rb\n72.17%\n85Rb is stable with 48 neutrons\n\n\n86Rb\nsyn\n18.65 d\n??\n1.775\n86Sr\n\n\n?\n1.0767\n�\n\n\n87Rb\n27.83%\n4.9�1010 y\n??\n0.283\n87Sr",
+    "iso": "iso NA half-life DM DE (MeV) DP 83Rb syn 86.2 d? � 83Kr ?  0.52, 0.53, 0.55 � 84Rb syn 32.9 d ? � 84Kr ?+ 1.66, 0.78 84Kr ?\n0.881\n�\n\n\n??\n0.892\n84Sr\n\n\n85Rb\n72.17%\n85Rb is stable with 48 neutrons\n\n\n86Rb\nsyn\n18.65 d\n??\n1.775\n86Sr\n\n\n?\n1.0767\n�\n\n\n87Rb\n27.83%\n4.9�1010 y\n??\n0.283\n87Sr",
     "at_t_(k)": 434,
     "naming": "",
     "first_isolation": "George de Hevesy",
