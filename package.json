@@ -11,8 +11,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server",
-    "build": "react-scripts --max_old_space_size=4096 build"
+    "start:dev": "node server"
   },
   "engines": {
     "node": ">=6"
