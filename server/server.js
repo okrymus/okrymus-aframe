@@ -43,27 +43,26 @@ app.use(express.json());
 // var io = require("socket.io").listen(server);
 
 // Socket.io
-var http = require("https");
-var sslPath = "/etc/letsencrypt/live/okrymus.com/";
-var options = {
-  key: fs.readFileSync(sslPath + "privkey.pem"),
-  cert: fs.readFileSync(sslPath + "fullchain.pem")
-};
+// var http = require("https");
+// var sslPath = "/etc/letsencrypt/live/okrymus.com/";
+// var options = {
+//   key: fs.readFileSync(sslPath + "privkey.pem"),
+//   cert: fs.readFileSync(sslPath + "fullchain.pem")
+// };
 
-var server = http.createServer(options, app);
-var io = require("socket.io").listen(server);
-server.listen(8000);
+// var server = http.createServer(options, app);
+// var io = require("socket.io").listen(server);
+// server.listen(8000);
 
-io.on("connection", function(socket) {
-  console.log("a user connected");
-  socket.on("disconnect", function() {
-    console.log("User Disconnected");
-  });
-  socket.on("example_message", function(msg) {
-    console.log("message: " + msg);
-  });
-});
-// io.listen(8000);
+// io.on("connection", function(socket) {
+//   console.log("a user connected");
+//   socket.on("disconnect", function() {
+//     console.log("User Disconnected");
+//   });
+//   socket.on("example_message", function(msg) {
+//     console.log("message: " + msg);
+//   });
+// });
 
 // API routes
 require("./routes")(app);

@@ -9,6 +9,7 @@ const Header = () => (
     <nav>
       <Link to="/helloworld">Hello World</Link>
       <Link to="/realtime">Real Time</Link>
+      <Link to="/periodicTable">Periodic Tabble</Link>
     </nav>
 
     <hr />
