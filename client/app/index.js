@@ -8,19 +8,10 @@ import NotFound from "./components/App/NotFound";
 
 import Home from "./components/Home/Home";
 import RealTime from "./components/RealTime/RealTime";
-import PeriodicTable from "./components/PeriodicTable/PeriodicTable";
 
 import HelloWorld from "./components/HelloWorld/HelloWorld";
 
 import "./styles/styles.scss";
-import "aframe";
-import "aframe-html-shader";
-import "webvr-polyfill";
-require("aframe-extras");
-
-require("aframe-html-shader");
-require("aframe");
-require("webvr-ui");
 
 render(
   <Router>
@@ -29,7 +20,6 @@ render(
         <Route exact path="/" component={Home} />
         <Route path="/helloworld" component={HelloWorld} />
         <Route path="/realtime" component={RealTime} />
-        <Route path="/periodictable" component={PeriodicTable} />
         <Route component={NotFound} />
       </Switch>
     </App>

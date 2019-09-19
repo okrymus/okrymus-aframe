@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
-// var socket = require("socket.io-client")("https://okrymus.com:8000", {
-//   secure: true
-// });
+// import openSocket from "socket.io-client";
+var socket = require("socket.io-client")("https://okrymus.com:8000", {
+  secure: true
+});
 
-import openSocket from "socket.io-client";
-
-const socket = openSocket("http://localhost:8000");
+// const socket = openSocket("http://localhost:8000");
 
 class RealTime extends Component {
   constructor(props) {
