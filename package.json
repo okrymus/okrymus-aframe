@@ -1,11 +1,11 @@
 {
   "name": "okrymus",
   "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
+  "description": "Okrymus",
   "author": "Okrymus 'inc",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "git+https://github.com/okrymus/okrymus"
   },
   "license": "MIT",
   "private": true,
@@ -35,10 +35,7 @@
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
-    "dat.gui": "^0.7.6",
-    "domready": "^1.0.8",
     "eases": "^1.0.8",
-    "event-map": "^2.0.0",
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fibers": "^4.0.1",
@@ -64,7 +61,6 @@
     "tone": "^13.8.25",
     "tween.js": "^16.6.0",
     "url-loader": "^2.1.0",
-    "visibilityjs": "^2.0.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-middleware": "^3.7.1",

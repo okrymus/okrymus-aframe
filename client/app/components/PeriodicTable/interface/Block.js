@@ -1,5 +1,3 @@
-import "aframe";
-
 AFRAME.registerComponent("block", {
   init() {
     const bgElement = document.createElement("a-plane");

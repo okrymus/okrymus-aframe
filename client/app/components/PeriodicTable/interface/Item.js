@@ -1,5 +1,4 @@
 import "../interface/Example";
-import "aframe";
 
 AFRAME.registerComponent("menu-item", {
   schema: {

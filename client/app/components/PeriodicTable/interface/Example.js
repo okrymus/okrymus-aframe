@@ -1,5 +1,3 @@
-import "aframe";
-
 AFRAME.registerComponent("example", {
   schema: {
     atomic_number: {
