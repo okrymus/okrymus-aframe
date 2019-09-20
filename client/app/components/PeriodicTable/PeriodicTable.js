@@ -65,6 +65,17 @@ class PeriodicTable extends Component {
                 Left click any element in the periodic table to reveal an
                 example model and more information.
               </p>
+              <p className="howToPlay">
+                The tile's color is dedicated for element category.
+              </p>
+              <p className="howToPlay">
+                The whiteboard on the left shows electron configuration and
+                element category.
+              </p>
+              <p className="howToPlay">
+                The desk name on the right shows a person who discoved the
+                element.
+              </p>
             </div>
           </div>
         </div>
