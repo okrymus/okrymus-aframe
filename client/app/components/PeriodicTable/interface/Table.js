@@ -48,6 +48,7 @@ AFRAME.registerComponent("table", {
       "Boiling point",
       "rgb(255,255,255)",
       "",
+      "",
       ""
     ];
 
@@ -62,7 +63,8 @@ AFRAME.registerComponent("table", {
         selected_item: selected_item,
         color: element_category[element.element_category],
         electron_configuration: element.electron_configuration,
-        element_category: element.element_category
+        element_category: element.element_category,
+        discovery: element.discovery
       });
 
       this.el.appendChild(plane);
@@ -85,6 +87,7 @@ AFRAME.registerComponent("table", {
           selected_item[5] = element_category[element.element_category];
           selected_item[6] = element.electron_configuration;
           selected_item[7] = element.element_category;
+          selected_item[8] = element.discovery;
           if (currentSelection) {
             currentSelection.setAttribute("table-item", "selected", false);
           }

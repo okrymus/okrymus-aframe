@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { isMobile, is360 } from "../../utils/Helpers";
+import oilTank from "../../assets/models/oilTank.glb";
+
 import "./interface/Table";
 
 class AframeContent extends Component {
@@ -28,6 +30,24 @@ class AframeContent extends Component {
   render() {
     return (
       <a-scene id="scene" loading webvr-ui splash vr-mode-ui="enabled: false">
+        <a-assets>
+          <a-asset-item id="oilTank" src={oilTank}></a-asset-item>
+        </a-assets>
+
+        <a-gltf-model
+          src="#oilTank"
+          rotation="0 270 0"
+          position="-0.003 0.029 2.964"
+          scale="0.03 0.025 0.025"
+        ></a-gltf-model>
+
+        <a-gltf-model
+          src="#oilTank"
+          rotation="75.476 38.674 97.710"
+          position="-0.330 0.272 2.964"
+          scale="0.03 0.025 0.025"
+        ></a-gltf-model>
+
         <a-entity
           table
           position="-2.5 3 -4"
@@ -72,11 +92,11 @@ class AframeContent extends Component {
         <a-entity display id="display">
           <a-plane
             id="display_plane"
-            position="0.8 3.6 -4"
+            position="-0.788 4.1 -4"
             rotation="0 0 0"
             height="5"
             width="5"
-            scale="0.3 0.3 0.3"
+            scale="0.5 0.5 0.5"
           >
             <a-text
               id="symbol_example"
@@ -147,6 +167,45 @@ class AframeContent extends Component {
               position="2.3 1.9 0"
             ></a-text>
           </a-plane>
+        </a-entity>
+
+        <a-entity
+          gltf-model={require(`../../assets/models/scientist.glb`)}
+          rotation="0 270 0"
+          position="2.7 0 0"
+        >
+          <a-text
+            id="discovery"
+            value="Discovery"
+            color="black"
+            wrap-count="30"
+            width="3"
+            position="-0.419 1.216 0.69"
+            rotation="-17.761 0 0"
+            scale="0.195 0.224 0.990"
+          ></a-text>
+        </a-entity>
+
+        <a-entity
+          rotation="0 0 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 20000"
+        >
+          <a-entity position="5.0 5 0">
+            <a-text
+              value="WELCOME"
+              scale="3 3 1"
+              color="cyan"
+              rotation="0 250 0"
+            ></a-text>
+          </a-entity>
+          <a-entity position="5.0 0.1 0">
+            <a-text
+              value="click any element to see more information"
+              scale="0.8 0.8 1"
+              color="cyan"
+              rotation="0 250 0"
+            ></a-text>
+          </a-entity>
         </a-entity>
 
         <a-cylinder

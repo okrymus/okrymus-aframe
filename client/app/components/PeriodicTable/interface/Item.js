@@ -31,6 +31,9 @@ AFRAME.registerComponent("table-item", {
 
     element_category: {
       typr: "string"
+    },
+    discovery: {
+      typr: "string"
     }
   },
   init() {
@@ -73,6 +76,7 @@ AFRAME.registerComponent("table-item", {
         this.data.electron_configuration
       );
       element_category.setAttribute("value", this.data.element_category);
+      discovery.setAttribute("value", this.data.discovery);
     });
 
     this.el.addEventListener("mouseleave", () => {
@@ -90,8 +94,8 @@ AFRAME.registerComponent("table-item", {
           "value",
           this.data.selected_item[6]
         );
-
         element_category.setAttribute("value", this.data.selected_item[7]);
+        discovery.setAttribute("value", this.data.selected_item[8]);
       }
     });
 
@@ -124,7 +128,6 @@ AFRAME.registerComponent("table-item", {
       "scale",
       `${1 * 0.7} ${(width / height) * 0.7} ${1 * 0.7}`
     );
-
     atomic_number.setAttribute("position", "-0.5 0.3 0");
     this.el.appendChild(atomic_number);
   },
