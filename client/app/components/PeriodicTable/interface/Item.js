@@ -21,6 +21,16 @@ AFRAME.registerComponent("table-item", {
     },
     selected_item: {
       typr: "array"
+    },
+    color: {
+      typr: "string"
+    },
+    electron_configuration: {
+      typr: "string"
+    },
+
+    element_category: {
+      typr: "string"
     }
   },
   init() {
@@ -51,19 +61,23 @@ AFRAME.registerComponent("table-item", {
 
     //mouse events
     this.el.addEventListener("mouseenter", () => {
-      this.bgElement.setAttribute("material", "color", this.lightGray);
+      this.bgElement.setAttribute("material", "color", this.data.color);
       symbol_example.setAttribute("value", this.data.symbol);
       name_example.setAttribute("value", this.data.name);
       atomic_mass_example.setAttribute("value", this.data.atomic_weight);
       atomic_number_example.setAttribute("value", this.data.atomic_number);
       boiling_point_example.setAttribute("value", this.data.boiling_point);
+      display_plane.setAttribute("color", this.data.color);
+      electron_configuration.setAttribute(
+        "value",
+        this.data.electron_configuration
+      );
+      element_category.setAttribute("value", this.data.element_category);
     });
 
     this.el.addEventListener("mouseleave", () => {
       if (this.data.selected) {
         this.bgElement.setAttribute("material", "color", this.selectedColor);
-        symbol_example.setAttribute("value", this.data.symbol);
-        name_example.setAttribute("value", this.data.name);
       } else {
         this.bgElement.setAttribute("material", "color", this.darkGray);
         symbol_example.setAttribute("value", this.data.selected_item[0]);
@@ -71,6 +85,13 @@ AFRAME.registerComponent("table-item", {
         atomic_mass_example.setAttribute("value", this.data.selected_item[2]);
         atomic_number_example.setAttribute("value", this.data.selected_item[3]);
         boiling_point_example.setAttribute("value", this.data.selected_item[4]);
+        display_plane.setAttribute("color", this.data.selected_item[5]);
+        electron_configuration.setAttribute(
+          "value",
+          this.data.selected_item[6]
+        );
+
+        element_category.setAttribute("value", this.data.selected_item[7]);
       }
     });
 

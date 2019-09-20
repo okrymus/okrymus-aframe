@@ -35,8 +35,43 @@ class AframeContent extends Component {
           id="table"
         ></a-entity>
 
+        <a-entity
+          gltf-model={require(`../../assets/models/whiteboard.glb`)}
+          rotation="0 85 0"
+          position="-2.7 0 0"
+        >
+          <a-text
+            value="Electron configuration & category "
+            // position="-0.757 1.993 0.056"
+            position="-1.064 2.382 0.056"
+            scale="0.6 0.6 0.6"
+            side="double"
+          ></a-text>
+          <a-text
+            id="electron_configuration"
+            value=""
+            wrap-count="20"
+            width="1.5"
+            position="-0.9 1.993 0.056"
+            // position="-1.064 2.382 0.056"
+            scale="0.8 0.8 0.8"
+            color="black"
+          ></a-text>
+          <a-text
+            id="element_category"
+            value=""
+            position="-0.9 1.7 0.056"
+            wrap-count="20"
+            width="1.5"
+            // position="-1.064 2.382 0.056"
+            // scale="0.6 0.6 0.6"
+            color="black"
+          ></a-text>
+        </a-entity>
+
         <a-entity display id="display">
           <a-plane
+            id="display_plane"
             position="0.8 3.6 -4"
             rotation="0 0 0"
             height="5"
@@ -94,8 +129,8 @@ class AframeContent extends Component {
               width="1"
               height="0.31"
               side="double"
-              scale="1.5 1.5 1.5"
-              position="-2.3 2 0"
+              scale="2.5 2.5 2.5"
+              position="-2.3 1.9 0"
             ></a-text>
 
             <a-text
@@ -108,28 +143,21 @@ class AframeContent extends Component {
               width="1"
               height="0.31"
               side="double"
-              scale="1.5 1.5 1.5"
-              position="2.3 2 0"
+              scale="2.5 2.5 2.5"
+              position="2.3 1.9 0"
             ></a-text>
           </a-plane>
         </a-entity>
 
-        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <a-cylinder
-          position="1 0.75 -3"
-          radius="0.5"
-          height="1.5"
-          color="#FFC65D"
+          position="0 0 0"
+          radius="3.5"
+          height="0.1"
+          color="#ffffff"
         ></a-cylinder>
-        <a-plane
-          position="0 0 -4"
-          rotation="-90 0 0"
-          width="4"
-          height="4"
-          color="#7BC8A4"
-        ></a-plane>
-        <a-sky color="#ECECEC"></a-sky>
+
+        {/* <a-sky color="#ECECEC"></a-sky> */}
+        <a-sky color="#000000"></a-sky>
 
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
       </a-scene>
