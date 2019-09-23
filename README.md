@@ -1,11 +1,14 @@
 # OKRYMUS
 
-This is a simple experiment periodic table via webVR.
+This is a simple experiment periodic table via webVR. If you have no VR device, it is okey. You also can experince with 360 degree view like it bring you into a small class room.
 
 ## LIVE
 
 Hosted by Amazon Web Services (AWS) free web server
-[Click Link](https://okrymus.com/periodicTable)
+[ Click HERE](https://okrymus.com/periodicTable)
+(https://okrymus.com/periodicTable)
+
+## Technologies
 
 This is a project using the following technologies:
 
@@ -32,6 +35,7 @@ sudo apt-get install mongodb -y
 ## Running
 
 You need to create an user in MangoDB.
+Example
 
 ```shell
 use my_db_name
@@ -57,7 +61,17 @@ Development (Webpack dev server) mode:
 npm run start:dev
 ```
 
+## How to play
+
+- Use [w][a] [d][s] to move around
+- Mouseover any element in the table to reveal more information about each element
+- Left click any element in the periodic table to reveal an example model and more information.
+- The tile's color is dedicated for element category.
+- The whiteboard on the left shows electron configuration and element category.
+- The desk name on the right shows a person who discoved the element.
+
 ## Source
 
 - [MERN-boilerplate](https://github.com/okrymus/MERN-boilerplate)
 - [Peridic Table data](https://www.kaggle.com/jwaitze/tablesoftheelements)
+- [3D MODELS](https://sketchfab.com)
